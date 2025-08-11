@@ -1,0 +1,87 @@
+[
+  {
+    "id": 1,
+    "name": "Todos",
+    "active": true
+  },
+  {
+    "id": 2,
+    "name": "Acción",
+    "active": false
+  },
+  {
+    "id": 3,
+    "name": "Aventura",
+    "active": false
+  },
+  {
+    "id": 4,
+    "name": "Animación",
+    "active": false
+  },
+  {
+    "id": 5,
+    "name": "Fantasía",
+    "active": false
+  },
+  {
+    "id": 6,
+    "name": "Musical",
+    "active": false
+  },
+  {
+    "id": 7,
+    "name": "Superheroe",
+    "active": false
+  },
+  {
+    "id": 8,
+    "name": "Marvel",
+    "active": false
+  },
+  {
+    "id": 9,
+    "name": "Disparos",
+    "active": false
+  },
+  {
+    "id": 10,
+    "name": "Thriller",
+    "active": false
+  },
+  {
+    "id": 11,
+    "name": "Comedia",
+    "active": false
+  },
+  {
+    "id": 12,
+    "name": "Infantil",
+    "active": false
+  },
+  {
+    "id": 13,
+    "name": "Emotiva",
+    "active": false
+  },
+  {
+    "id": 14,
+    "name": "Ciencia Ficción",
+    "active": false
+  },
+  {
+    "id": 15,
+    "name": "Épico",
+    "active": false
+  },
+  {
+    "id": 16,
+    "name": "Espacio",
+    "active": false
+  },
+  {
+    "id": 17,
+    "name": "Sátira",
+    "active": false
+  }
+]
