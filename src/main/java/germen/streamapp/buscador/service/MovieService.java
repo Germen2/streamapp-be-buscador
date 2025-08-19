@@ -58,5 +58,9 @@ public class MovieService {
         return movieRepository.findAll(spec);
     }
 
+    //Buscar peliculas con una lista de ids
+    public List<Movie> getMoviesByIds(List<Long> ids) {
+        return movieRepository.findByIdIn(ids);
+    }
 
 }

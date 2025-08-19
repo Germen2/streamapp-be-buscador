@@ -3,6 +3,7 @@ package germen.streamapp.buscador.controller;
 import germen.streamapp.buscador.model.Movie;
 import germen.streamapp.buscador.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -52,6 +53,11 @@ public class MovieController {
             //@RequestParam(required = false) Long categoryId
     ) {
         return movieService.searchMovies(title, year);
+    }
+
+    @PostMapping("/by-ids")
+    public ResponseEntity<List<Movie>> getMoviesByIds(@RequestBody List<Long> ids) {
+        return ResponseEntity.ok(movieService.getMoviesByIds(ids));
     }
 }
 
