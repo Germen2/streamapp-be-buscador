@@ -1,33 +1,48 @@
-version: '3.8'
+version: '3.9'
 
 services:
-  db:
-    image: mysql:8
-    restart: always
-    environment:
-      MYSQL_DATABASE: streamapp
-      MYSQL_USER: user
-      MYSQL_PASSWORD: pass
-      MYSQL_ROOT_PASSWORD: root
-    ports:
-      - "3306:3306"
-    volumes:
-      - mysql-data:/var/lib/mysql
-
-  backend:
+  buscador:
     build: .
-    container_name: streamapp-backend
     ports:
       - "8080:8080"
+    env_file:
+      - .env
     depends_on:
-      - db
+      - mysql
+    networks:
+      - streamapp-network
+
+  operador:
+    build: ../streamapp-be-operador
+    ports:
+      - "8081:8081"
+    env_file:
+      - ../streamapp-be-operador/.env
+    depends_on:
+      - mysql
+    networks:
+      - streamapp-network
+
+  mysql:
+    image: mysql:8.1
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    env_file:
+      - .env
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/streamapp?useSSL=false&serverTimezone=UTC
-      SPRING_DATASOURCE_USERNAME: user
-      SPRING_DATASOURCE_PASSWORD: pass
-    command: ["java", "-jar", "/app/streamapp.jar"]
+      MYSQL_ROOT_PASSWORD: "${SPRING_DATASOURCE_PASSWORD}"
+      MYSQL_DATABASE: streamapp
+      MYSQL_USER: "${SPRING_DATASOURCE_USERNAME}"
+      MYSQL_PASSWORD: "${SPRING_DATASOURCE_PASSWORD}"
     volumes:
-      - ./target:/app
+      - backend-db-data:/var/lib/mysql
+    networks:
+      - streamapp-network
 
 volumes:
-  mysql-data:
+  backend-db-data:
+
+networks:
+  streamapp-network:
+    external: true
